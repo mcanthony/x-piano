@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<title>&lt;x-piano&gt; | HTML Imports</title>
+<link rel="import" href="x-piano/x-piano.html" />
+<style type="text/css">
+
+    * {
+        margin:0px;
+        padding:0px;
+    }
+
+    body {
+        font-family:'Myriad Pro', Calibri, Helvetica, Arial, sans-serif;
+        font-size:16px;
+        line-height:1.5;
+        color:#777;
+        background-color:#fafafa;
+    }
+
+    h1 {
+        padding:2rem 0rem;
+        font-family:'Lucida Grande', 'Calibri', Helvetica, Arial, sans-serif;
+        font-size:1.5rem;
+        font-style:italic;
+        color:#C0C;
+        text-align:center;
+        background-color:#000;
+    }
+
+    x-piano {margin:2rem auto;}
+
+    #x-piano-tag, fieldset {
+        -webkit-box-sizing:border-box;
+           -moz-box-sizing:border-box;
+                box-sizing:border-box;
+
+        margin:2rem auto;
+        border:2px solid #EEE;
+        width:1256px;
+        background-color:#FFF;
+    }
+
+    #x-piano-tag {
+        padding:1rem;
+        font-size:1.125rem;
+        color:#676767;
+    }
+
+    fieldset {padding:2rem;}
+
+    legend {
+        font-size:22px;
+        font-style:italic;
+    }
+
+    dl {float:left; color:#999;}
+        dl dt {margin:0.5rem 0rem; list-style-type:square; font-size:1.125rem;}
+        dl dt:before {
+            content:"";
+            display:inline-block;
+            margin-right:0.5rem;
+            border-top:10px solid rgba(0, 0, 0, 0);
+            border-bottom:10px solid rgba(0, 0, 0, 0);
+            border-left:15px solid #999;
+            vertical-align:-0.25rem;
+        }
+
+    dl:not(:first-of-type) {margin-left:2rem}
+
+    input, label {cursor:pointer}
+
+    [type="radio"] {margin-left:0.5rem;}
+
+    footer {
+        clear:both;
+        margin:1.5rem 0rem;
+        padding:3rem 0rem;
+        color:#fafafa;
+        text-align:center;
+        background-color:#000;
+    }
+
+    small {font-size:0.875rem;}
+
+</style>
+<script type="text/javascript">
+<!--
+    document.addEventListener('DOMContentLoaded', function() {
+        var xpiano = document.querySelector('x-piano');
+
+        var updateXPianoTag = function() {
+            document.getElementById('x-piano-tag').textContent = document.getElementById('x-piano-wrapper').innerHTML;
+        };
+
+        updateXPianoTag();
+
+        document.getElementById('form-type').addEventListener('change', function() {
+            for (var i = 0 , len = this.elements['radio-type'].length; i < len; i++) {
+                if (this.elements['radio-type'][i].checked) {
+                    xpiano.setAttribute(XPiano.ATTRIBUTES.TYPE, this.elements['radio-type'][i].value);
+                    updateXPianoTag();
+                    break;
+                }
+            }
+        }, false);
+
+        document.getElementById('range-volume').addEventListener(XPiano.MOUSE_EVENTS.MOVE, function() {
+            xpiano.setAttribute(XPiano.ATTRIBUTES.VOLUME, this.value);
+            document.getElementById('output-volume').textContent = this.value;
+            updateXPianoTag();
+        }, false);
+
+        document.getElementById('range-attack').addEventListener(XPiano.MOUSE_EVENTS.MOVE, function() {
+            xpiano.setAttribute(XPiano.ATTRIBUTES.ATTACK, this.value);
+            document.getElementById('output-attack').textContent = this.value;
+            updateXPianoTag();
+        }, false);
+
+        document.getElementById('range-decay').addEventListener(XPiano.MOUSE_EVENTS.MOVE, function() {
+            xpiano.setAttribute(XPiano.ATTRIBUTES.DECAY, this.value);
+            document.getElementById('output-decay').textContent = this.value;
+            updateXPianoTag();
+        }, false);
+
+        document.getElementById('range-sustain').addEventListener(XPiano.MOUSE_EVENTS.MOVE, function() {
+            xpiano.setAttribute(XPiano.ATTRIBUTES.SUSTAIN, this.value);
+            document.getElementById('output-sustain').textContent = this.value;
+            updateXPianoTag();
+        }, false);
+
+        document.getElementById('range-release').addEventListener(XPiano.MOUSE_EVENTS.MOVE, function() {
+            xpiano.setAttribute(XPiano.ATTRIBUTES.RELEASE, this.value);
+            document.getElementById('output-release').textContent = this.value;
+            updateXPianoTag();
+        }, false);
+
+        document.getElementById('range-transpose').addEventListener(XPiano.MOUSE_EVENTS.MOVE, function() {
+            xpiano.setAttribute(XPiano.ATTRIBUTES.TRANSPOSE, this.value);
+            document.getElementById('output-transpose').textContent = this.value;
+            updateXPianoTag();
+        }, false);
+
+        document.getElementById('range-glide').addEventListener(XPiano.MOUSE_EVENTS.MOVE, function() {
+            xpiano.setAttribute(XPiano.ATTRIBUTES.GLIDE, this.value);
+            document.getElementById('output-glide').textContent = this.value;
+            updateXPianoTag();
+        }, false);
+
+    }, true);
+//-->
+</script>
+</head>
+<body>
+    <header>
+        <h1>Import &lt;x-piano&gt;</h1>
+    </header>
+
+    <section>
+        <div id="x-piano-wrapper">
+            <x-piano></x-piano>
+        </div>
+
+        <div id="x-piano-tag"></div>
+
+        <fieldset>
+            <legend>Attribute Controller</legend>
+            <dl>
+                <dt>type</dt>
+                <dd>
+                    <form id="form-type">
+                        <label><input type="radio" name="radio-type" value="piano" checked />&nbsp;&nbsp;piano</label>
+                        <label><input type="radio" name="radio-type" value="sin" />&nbsp;&nbsp;sin</label>
+                        <label><input type="radio" name="radio-type" value="square" />&nbsp;&nbsp;square</label>
+                        <label><input type="radio" name="radio-type" value="sawtooth" />&nbsp;&nbsp;sawtooth</label>
+                        <label><input type="radio" name="radio-type" value="triangle" />&nbsp;&nbsp;triangle</label>
+                    </form>
+                </dd>
+                <dt><label for="range-volume">volume : <span id="output-volume">1</span></label></dt>
+                <dd><input type="range" id="range-volume" value="1" min="0" max="1" step="0.05" /></dd>
+                <dt><label for="range-transpose">transpose : <span id="output-transpose">0</span></label></dt>
+                <dd><input type="range" id="range-transpose" value="0" min="-12" max="12" step="1" /></dd>
+                <dt><label for="range-glide">glide : <span id="output-glide">0</span></label></dt>
+                <dd><input type="range" id="range-glide" value="0" min="0" max="5" step="0.5" /></dd>
+            </dl>
+            <dl>
+                <dt><label for="range-attack">attack : <span id="output-attack">0.01</span></label></dt>
+                <dd><input type="range" id="range-attack" value="0.01" min="0" max="1" step="0.01" /></dd>
+                <dt><label for="range-decay">decay : <span id="output-decay">0.3</span></label></dt>
+                <dd><input type="range" id="range-decay" value="0.3" min="0" max="1" step="0.01" /></dd>
+                <dt><label for="range-sustain">sustain : <span id="output-sustain">1</span></label></dt>
+                <dd><input type="range" id="range-sustain" value="1" min="0" max="1" step="0.01" /></dd>
+                <dt><label for="range-release">release : <span id="output-release">1</span></label></dt>
+                <dd><input type="range" id="range-release" value="1" min="0" max="1" step="0.01" /></dd>
+            </dl>
+        </fieldset>
+    </section>
+
+    <footer>
+        <small>Copyright 2014 &COPY; Tomohiro IKEDA</small>
+    </footer>
+</body>
+</html>
