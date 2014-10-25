@@ -92,12 +92,25 @@
 
         var updateXPianoTag = function() {
             document.getElementById('x-piano-tag').textContent = document.getElementById('x-piano-wrapper').innerHTML;
+            document.getElementById('x-piano-tag').textContent = document.getElementById('x-piano-tag').textContent.replace(/&quot;/g, '"');
+        };
+
+        xpiano.onDownCallback = function(element, index) {
+            updateXPianoTag();
+            console.log(index + ' :');
+            console.dir(element);
+        };
+
+        xpiano.onUpCallback = function(element, index) {
+            updateXPianoTag();
+            console.log(index + ' :');
+            console.dir(element);
         };
 
         updateXPianoTag();
 
         document.getElementById('form-type').addEventListener('change', function() {
-            for (var i = 0 , len = this.elements['radio-type'].length; i < len; i++) {
+            for (var i = 0, len = this.elements['radio-type'].length; i < len; i++) {
                 if (this.elements['radio-type'][i].checked) {
                     xpiano.setAttribute(XPiano.ATTRIBUTES.TYPE, this.elements['radio-type'][i].value);
                     updateXPianoTag();
@@ -182,7 +195,7 @@
                 <dt><label for="range-transpose">transpose : <span id="output-transpose">0</span></label></dt>
                 <dd><input type="range" id="range-transpose" value="0" min="-12" max="12" step="1" /></dd>
                 <dt><label for="range-glide">glide : <span id="output-glide">0</span></label></dt>
-                <dd><input type="range" id="range-glide" value="0" min="0" max="5" step="0.5" /></dd>
+                <dd><input type="range" id="range-glide" value="0" min="0" max="1" step="0.05" /></dd>
             </dl>
             <dl>
                 <dt><label for="range-attack">attack : <span id="output-attack">0.01</span></label></dt>

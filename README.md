@@ -44,4 +44,33 @@ Refer to the following table for attribute details.
 | release    | Envelope Generator (Release) | 0.0 - 1.0 (1.0  by default)                                |
 | transpose  | Transpose                    | Integer   (0    by default)                                |
 | glide      | Glide (Oscillator only)      | 0.0 -     (0.0  by default)                                |
+| value      | Keyboard Index               | JSON (readonly)                                            |
+  
+## Callbacks
+  
+The following callbacks is invoked when keyboard was either down or up.
+  
+    var xpiano = document.querySelector('x-piano');
+
+    /**
+     * This callback is invoked when keyboard was down.
+     * @param {HTMLElement} element This argument is the instance of HTMLElement that is added event listener.
+     * @param {number} index This argument is the index of keyboard where event occurred.
+     *     This value is between 0 and 87.
+     */
+    xpiano.onDownCallback = function(element, index) {
+        console.log(index + ' :');
+        console.dir(element);
+    };
+
+    /**
+     * This callback is invoked when keyboard was up.
+     * @param {HTMLElement} element This argument is the instance of HTMLElement that is added event listener.
+     * @param {number} index This argument is the index of keyboard where event occurred.
+     *     This value is between 0 and 87.
+     */
+    xpiano.onUpCallback = function(element, index) {
+        console.log(index + ' :');
+        console.dir(element);
+    };
   
