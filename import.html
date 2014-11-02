@@ -109,6 +109,16 @@
 
         updateXPianoTag();
 
+        document.getElementById('form-theme').addEventListener('change', function() {
+            for (var i = 0, len = this.elements['radio-theme'].length; i < len; i++) {
+                if (this.elements['radio-theme'][i].checked) {
+                    xpiano.setAttribute(XPiano.ATTRIBUTES.THEME, this.elements['radio-theme'][i].value);
+                    updateXPianoTag();
+                    break;
+                }
+            }
+        }, false);
+
         document.getElementById('form-type').addEventListener('change', function() {
             for (var i = 0, len = this.elements['radio-type'].length; i < len; i++) {
                 if (this.elements['radio-type'][i].checked) {
@@ -180,6 +190,16 @@
         <fieldset>
             <legend>Attribute Controller</legend>
             <dl>
+                <dt>theme</dt>
+                <dd>
+                    <form id="form-theme">
+                        <label><input type="radio" name="radio-theme" value="normal" checked />&nbsp;&nbsp;normal</label>
+                        <label><input type="radio" name="radio-theme" value="fiber" />&nbsp;&nbsp;fiber</label>
+                        <label><input type="radio" name="radio-theme" value="wood" />&nbsp;&nbsp;wood</label>
+                        <label><input type="radio" name="radio-theme" value="crystal" />&nbsp;&nbsp;crystal</label>
+                        <label><input type="radio" name="radio-theme" value="flat" />&nbsp;&nbsp;flat</label>
+                    </form>
+                </dd>
                 <dt>type</dt>
                 <dd>
                     <form id="form-type">
