@@ -3,6 +3,8 @@
 <head>
 <meta charset="UTF-8" />
 <title>&lt;x-piano&gt; | HTML Imports</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+<meta name="format-detection" content="telephone=no" />
 <link rel="import" href="x-piano/x-piano.html" />
 <style type="text/css">
 
@@ -84,6 +86,12 @@
 
     small {font-size:0.875rem;}
 
+    .invisibility {
+        width:0px;
+        height:0px;
+        overflow:hidden;
+    }
+
 </style>
 <script type="text/javascript">
 <!--
@@ -92,7 +100,7 @@
 
         var updateXPianoTag = function() {
             document.getElementById('x-piano-tag').textContent = document.getElementById('x-piano-wrapper').innerHTML;
-            document.getElementById('x-piano-tag').textContent = document.getElementById('x-piano-tag').textContent.replace(/&quot;/g, '"');
+            document.getElementById('x-piano-tag').textContent = document.getElementById('x-piano-tag').textContent.replace(/&quot;/g, '"').replace(/=""/g, '');
         };
 
         xpiano.onDownCallback = function(element, index) {
@@ -108,6 +116,16 @@
         };
 
         updateXPianoTag();
+
+        document.getElementById('checkbox-ui-only').addEventListener('click', function() {
+            if (this.checked) {
+                xpiano.setAttribute(XPiano.ATTRIBUTES.UI_ONLY, '');
+            } else {
+                xpiano.removeAttribute(XPiano.ATTRIBUTES.UI_ONLY);
+            }
+
+            updateXPianoTag();
+        }, false);
 
         document.getElementById('form-theme').addEventListener('change', function() {
             for (var i = 0, len = this.elements['radio-theme'].length; i < len; i++) {
@@ -190,6 +208,8 @@
         <fieldset>
             <legend>Attribute Controller</legend>
             <dl>
+                <dt><label><input type="checkbox" id="checkbox-ui-only" /> ui-only</label></dt>
+                <dd class="invisibility">ui-only</dd>
                 <dt>theme</dt>
                 <dd>
                     <form id="form-theme">

@@ -36,7 +36,8 @@ Refer to the following table for attribute details.
   
 |  Attribute | Description                  | Value                                                      |
 |:-----------|:-----------------------------|:-----------------------------------------------------------|
-|:theme      | Piano Design                 | 'normal' (default), 'fiber', 'wood', 'crystal', 'flat'     |
+| ui-only    | Not use sound                | boolean attribute                                          |
+| theme      | Piano Design                 | 'normal' (default), 'fiber', 'wood', 'crystal', 'flat'     |
 | type       | Sound Source                 | 'piano' (default), 'sin', 'square', 'sawtooth', 'triangle' |
 | volume     | Master Volume                | 0.0 - 1.0 (1.0  by default)                                |
 | attack     | Envelope Generator (Attack)  | 0.0 - 1.0 (0.01 by default)                                |
