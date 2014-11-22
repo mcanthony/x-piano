@@ -34,19 +34,19 @@ For example,
   
 Refer to the following table for attribute details.
   
-|  Attribute | Description                  | Value                                                      |
-|:-----------|:-----------------------------|:-----------------------------------------------------------|
-| ui-only    | Not use sound                | boolean attribute                                          |
-| theme      | Piano Design                 | 'normal' (default), 'fiber', 'wood', 'crystal', 'flat'     |
-| type       | Sound Source                 | 'piano' (default), 'sin', 'square', 'sawtooth', 'triangle' |
-| volume     | Master Volume                | 0.0 - 1.0 (1.0  by default)                                |
-| attack     | Envelope Generator (Attack)  | 0.0 - 1.0 (0.01 by default)                                |
-| decay      | Envelope Generator (Decay)   | 0.0 - 1.0 (0.3  by default)                                |
-| sustain    | Envelope Generator (Sustain) | 0.0 - 1.0 (1.0  by default)                                |
-| release    | Envelope Generator (Release) | 0.0 - 1.0 (1.0  by default)                                |
-| transpose  | Transpose                    | Integer   (0    by default)                                |
-| glide      | Glide (Oscillator only)      | 0.0 -     (0.0  by default)                                |
-| value      | Keyboard Index               | JSON (readonly)                                            |
+|  Attribute | Description                  | Value                                                                      |
+|:-----------|:-----------------------------|:---------------------------------------------------------------------------|
+| ui-only    | Not use sound                | boolean attribute                                                          |
+| theme      | Piano Design                 | 'normal' (default), 'fiber', 'wood', 'crystal', 'flat', 'keyboard', 'none' |
+| type       | Sound Source                 | 'piano' (default), 'sin', 'square', 'sawtooth', 'triangle'                 |
+| volume     | Master Volume                | 0.0 - 1.0 (1.0  by default)                                                |
+| attack     | Envelope Generator (Attack)  | 0.0 - 1.0 (0.01 by default)                                                |
+| decay      | Envelope Generator (Decay)   | 0.0 - 1.0 (0.3  by default)                                                |
+| sustain    | Envelope Generator (Sustain) | 0.0 - 1.0 (1.0  by default)                                                |
+| release    | Envelope Generator (Release) | 0.0 - 1.0 (1.0  by default)                                                |
+| transpose  | Transpose                    | Integer   (0    by default)                                                |
+| glide      | Glide (Oscillator only)      | 0.0 -     (0.0  by default)                                                |
+| value      | Keyboard Index               | JSON (readonly)                                                            |
   
 ## Callbacks
   
