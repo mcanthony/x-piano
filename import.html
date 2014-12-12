@@ -103,13 +103,13 @@
             document.getElementById('x-piano-tag').textContent = document.getElementById('x-piano-tag').textContent.replace(/&quot;/g, '"').replace(/=""/g, '');
         };
 
-        xpiano.onDownCallback = function(element, index) {
+        xpiano.onkeyboarddown = function(element, index) {
             updateXPianoTag();
             console.log(index + ' :');
             console.dir(element);
         };
 
-        xpiano.onUpCallback = function(element, index) {
+        xpiano.onkeyboardup = function(element, index) {
             updateXPianoTag();
             console.log(index + ' :');
             console.dir(element);

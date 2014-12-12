@@ -347,37 +347,37 @@
                     configurable : false,
                     enumerable   : true
                 },
-                _onDownCallback : {
+                _onkeyboarddown : {
                     value        : function(element, index) {},
                     writable     : true,
                     configurable : false,
                     enumerable   : false
                 },
-                onDownCallback : {
+                onkeyboarddown : {
                     get : function() {
-                        return this._onDownCallback;
+                        return this._onkeyboarddown;
                     },
                     set : function(callback) {
                         if (Object.prototype.toString.call(callback) === '[object Function]') {
-                            this._onDownCallback = callback;
+                            this._onkeyboarddown = callback;
                         }
                     },
                     configurable : false,
                     enumerable   : true
                 },
-                _onUpCallback : {
+                _onkeyboardup : {
                     value        : function(element, index) {},
                     writable     : true,
                     configurable : false,
                     enumerable   : false
                 },
-                onUpCallback : {
+                onkeyboardup : {
                     get : function() {
-                        return this._onUpCallback;
+                        return this._onkeyboardup;
                     },
                     set : function(callback) {
                         if (Object.prototype.toString.call(callback) === '[object Function]') {
-                            this._onUpCallback = callback;
+                            this._onkeyboardup = callback;
                         }
                     },
                     configurable : false,
@@ -690,7 +690,7 @@
                                 var callback = function() {
                                     element.classList.add('x-piano-on');
                                     element.classList.remove('x-piano-off');
-                                    self.onDownCallback(element, index);
+                                    self.onkeyboarddown(element, index);
                                 };
 
                                 if (self.uiOnly) {
@@ -816,7 +816,7 @@
                                 var callback = function() {
                                     element.classList.add('x-piano-off');
                                     element.classList.remove('x-piano-on');
-                                    self.onUpCallback(element, index);
+                                    self.onkeyboardup(element, index);
                                 };
 
                                 if (self.uiOnly) {

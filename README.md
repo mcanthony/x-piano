@@ -60,7 +60,7 @@ The following callbacks is invoked when keyboard was either down or up.
      * @param {number} index This argument is the index of keyboard where event occurred.
      *     This value is between 0 and 87.
      */
-    xpiano.onDownCallback = function(element, index) {
+    xpiano.onkeyboarddown = function(element, index) {
         console.log(index + ' :');
         console.dir(element);
     };
@@ -71,7 +71,7 @@ The following callbacks is invoked when keyboard was either down or up.
      * @param {number} index This argument is the index of keyboard where event occurred.
      *     This value is between 0 and 87.
      */
-    xpiano.onUpCallback = function(element, index) {
+    xpiano.onkeyboardup = function(element, index) {
         console.log(index + ' :');
         console.dir(element);
     };
