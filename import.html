@@ -5,7 +5,6 @@
 <title>&lt;x-piano&gt; | HTML Imports</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <meta name="format-detection" content="telephone=no" />
-<link rel="import" href="x-piano/x-piano.html" />
 <style type="text/css">
 
     * {
@@ -95,101 +94,115 @@
 </style>
 <script type="text/javascript">
 <!--
-    document.addEventListener('DOMContentLoaded', function() {
-        var xpiano = document.querySelector('x-piano');
+    (function() {
+        var link = document.createElement('link');
 
-        var updateXPianoTag = function() {
-            document.getElementById('x-piano-tag').textContent = document.getElementById('x-piano-wrapper').innerHTML;
-            document.getElementById('x-piano-tag').textContent = document.getElementById('x-piano-tag').textContent.replace(/&quot;/g, '"').replace(/=""/g, '');
-        };
+        link.setAttribute('rel', 'import');
+        link.setAttribute('href', 'x-piano/x-piano.html');
+        link.setAttribute('type', 'text/html');
 
-        xpiano.onkeyboarddown = function(element, index) {
-            updateXPianoTag();
-            console.log(index + ' :');
-            console.dir(element);
-        };
+        link.onload = function(event) {
+            var xpiano = document.querySelector('x-piano');
 
-        xpiano.onkeyboardup = function(element, index) {
-            updateXPianoTag();
-            console.log(index + ' :');
-            console.dir(element);
-        };
+            var updateXPianoTag = function() {
+                document.getElementById('x-piano-tag').textContent = document.getElementById('x-piano-wrapper').innerHTML;
+                document.getElementById('x-piano-tag').textContent = document.getElementById('x-piano-tag').textContent.replace(/&quot;/g, '"').replace(/=""/g, '');
+            };
 
-        updateXPianoTag();
+            xpiano.onkeyboarddown = function(element, index) {
+                updateXPianoTag();
+                console.log(index + ' :');
+                console.dir(element);
+            };
 
-        document.getElementById('checkbox-ui-only').addEventListener('click', function() {
-            if (this.checked) {
-                xpiano.setAttribute(XPiano.ATTRIBUTES.UI_ONLY, '');
-            } else {
-                xpiano.removeAttribute(XPiano.ATTRIBUTES.UI_ONLY);
-            }
+            xpiano.onkeyboardup = function(element, index) {
+                updateXPianoTag();
+                console.log(index + ' :');
+                console.dir(element);
+            };
 
             updateXPianoTag();
-        }, false);
 
-        document.getElementById('form-theme').addEventListener('change', function() {
-            for (var i = 0, len = this.elements['radio-theme'].length; i < len; i++) {
-                if (this.elements['radio-theme'][i].checked) {
-                    xpiano.setAttribute(XPiano.ATTRIBUTES.THEME, this.elements['radio-theme'][i].value);
-                    updateXPianoTag();
-                    break;
+            document.getElementById('checkbox-ui-only').addEventListener('click', function() {
+                if (this.checked) {
+                    xpiano.setAttribute(XPiano.ATTRIBUTES.UI_ONLY, '');
+                } else {
+                    xpiano.removeAttribute(XPiano.ATTRIBUTES.UI_ONLY);
                 }
-            }
-        }, false);
 
-        document.getElementById('form-type').addEventListener('change', function() {
-            for (var i = 0, len = this.elements['radio-type'].length; i < len; i++) {
-                if (this.elements['radio-type'][i].checked) {
-                    xpiano.setAttribute(XPiano.ATTRIBUTES.TYPE, this.elements['radio-type'][i].value);
-                    updateXPianoTag();
-                    break;
+                updateXPianoTag();
+            }, false);
+
+            document.getElementById('form-theme').addEventListener('change', function() {
+                for (var i = 0, len = this.elements['radio-theme'].length; i < len; i++) {
+                    if (this.elements['radio-theme'][i].checked) {
+                        xpiano.setAttribute(XPiano.ATTRIBUTES.THEME, this.elements['radio-theme'][i].value);
+                        updateXPianoTag();
+                        break;
+                    }
                 }
-            }
-        }, false);
+            }, false);
 
-        document.getElementById('range-volume').addEventListener(XPiano.MOUSE_EVENTS.MOVE, function() {
-            xpiano.setAttribute(XPiano.ATTRIBUTES.VOLUME, this.value);
-            document.getElementById('output-volume').textContent = this.value;
-            updateXPianoTag();
-        }, false);
+            document.getElementById('form-type').addEventListener('change', function() {
+                for (var i = 0, len = this.elements['radio-type'].length; i < len; i++) {
+                    if (this.elements['radio-type'][i].checked) {
+                        xpiano.setAttribute(XPiano.ATTRIBUTES.TYPE, this.elements['radio-type'][i].value);
+                        updateXPianoTag();
+                        break;
+                    }
+                }
+            }, false);
 
-        document.getElementById('range-attack').addEventListener(XPiano.MOUSE_EVENTS.MOVE, function() {
-            xpiano.setAttribute(XPiano.ATTRIBUTES.ATTACK, this.value);
-            document.getElementById('output-attack').textContent = this.value;
-            updateXPianoTag();
-        }, false);
+            document.getElementById('range-volume').addEventListener(XPiano.MOUSE_EVENTS.MOVE, function() {
+                xpiano.setAttribute(XPiano.ATTRIBUTES.VOLUME, this.value);
+                document.getElementById('output-volume').textContent = this.value;
+                updateXPianoTag();
+            }, false);
 
-        document.getElementById('range-decay').addEventListener(XPiano.MOUSE_EVENTS.MOVE, function() {
-            xpiano.setAttribute(XPiano.ATTRIBUTES.DECAY, this.value);
-            document.getElementById('output-decay').textContent = this.value;
-            updateXPianoTag();
-        }, false);
+            document.getElementById('range-attack').addEventListener(XPiano.MOUSE_EVENTS.MOVE, function() {
+                xpiano.setAttribute(XPiano.ATTRIBUTES.ATTACK, this.value);
+                document.getElementById('output-attack').textContent = this.value;
+                updateXPianoTag();
+            }, false);
 
-        document.getElementById('range-sustain').addEventListener(XPiano.MOUSE_EVENTS.MOVE, function() {
-            xpiano.setAttribute(XPiano.ATTRIBUTES.SUSTAIN, this.value);
-            document.getElementById('output-sustain').textContent = this.value;
-            updateXPianoTag();
-        }, false);
+            document.getElementById('range-decay').addEventListener(XPiano.MOUSE_EVENTS.MOVE, function() {
+                xpiano.setAttribute(XPiano.ATTRIBUTES.DECAY, this.value);
+                document.getElementById('output-decay').textContent = this.value;
+                updateXPianoTag();
+            }, false);
 
-        document.getElementById('range-release').addEventListener(XPiano.MOUSE_EVENTS.MOVE, function() {
-            xpiano.setAttribute(XPiano.ATTRIBUTES.RELEASE, this.value);
-            document.getElementById('output-release').textContent = this.value;
-            updateXPianoTag();
-        }, false);
+            document.getElementById('range-sustain').addEventListener(XPiano.MOUSE_EVENTS.MOVE, function() {
+                xpiano.setAttribute(XPiano.ATTRIBUTES.SUSTAIN, this.value);
+                document.getElementById('output-sustain').textContent = this.value;
+                updateXPianoTag();
+            }, false);
 
-        document.getElementById('range-transpose').addEventListener(XPiano.MOUSE_EVENTS.MOVE, function() {
-            xpiano.setAttribute(XPiano.ATTRIBUTES.TRANSPOSE, this.value);
-            document.getElementById('output-transpose').textContent = this.value;
-            updateXPianoTag();
-        }, false);
+            document.getElementById('range-release').addEventListener(XPiano.MOUSE_EVENTS.MOVE, function() {
+                xpiano.setAttribute(XPiano.ATTRIBUTES.RELEASE, this.value);
+                document.getElementById('output-release').textContent = this.value;
+                updateXPianoTag();
+            }, false);
 
-        document.getElementById('range-glide').addEventListener(XPiano.MOUSE_EVENTS.MOVE, function() {
-            xpiano.setAttribute(XPiano.ATTRIBUTES.GLIDE, this.value);
-            document.getElementById('output-glide').textContent = this.value;
-            updateXPianoTag();
-        }, false);
+            document.getElementById('range-transpose').addEventListener(XPiano.MOUSE_EVENTS.MOVE, function() {
+                xpiano.setAttribute(XPiano.ATTRIBUTES.TRANSPOSE, this.value);
+                document.getElementById('output-transpose').textContent = this.value;
+                updateXPianoTag();
+            }, false);
 
-    }, true);
+            document.getElementById('range-glide').addEventListener(XPiano.MOUSE_EVENTS.MOVE, function() {
+                xpiano.setAttribute(XPiano.ATTRIBUTES.GLIDE, this.value);
+                document.getElementById('output-glide').textContent = this.value;
+                updateXPianoTag();
+            }, false);
+        };
+
+        link.onerror = function(error) {
+            console.error('HTML import failed');
+            console.dir(error);
+        };
+
+        document.querySelector('head').insertBefore(link, document.querySelector('style'));
+    })();
 //-->
 </script>
 </head>

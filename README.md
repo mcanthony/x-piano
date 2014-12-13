@@ -21,7 +21,47 @@ Web Components for Web Audio API
   
 <x-piano> tag can be used by the following HTML.
   
-    <link rel="import" href="x-piano/x-piano.html" />
+    <script type="text/javascript">
+    <!--
+        //This is invoked when import HTML is success.
+        var onLoadCallback = function(event) {
+            //do something for main document
+        };
+
+        //This is invoked when import HTML is failure.
+        var onErrorCallback = function(event) {
+            //do something for error
+        };
+    //-->
+    </script>
+    <link rel="import" href="x-piano/x-piano.html" type="text/html" onload="onLoadCallback(event)" onerror="onErrorCallback(event)" />
+  
+or,
+  
+    <script type="text/javascript">
+        <!--
+        (function() {
+            //Create <link> tag for import HTML dynamically
+            var link = document.createElement('link');
+
+            link.setAttribute('rel', 'import');
+            link.setAttribute('href', 'x-piano/x-piano.html');
+            link.setAttribute('type', 'text/html');
+
+            //This is invoked when import HTML is success.
+            link.onload = function(event) {
+                //do something for main document
+            };
+
+            //This is invoked when import HTML is failure.
+            link.onerror = function(error) {
+                //do something for error
+            };
+
+            document.querySelector('head').appendChild(link);
+        })();
+    //-->
+    </script>
   
 To import 'x-piano.html', then describe &lt;x-piano&gt; tag.
   
