@@ -2,7 +2,10 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8" />
-<title>&lt;x-piano&gt; | HTML Imports</title>
+<title>&lt;x-piano&gt; | HTML Imports | Web Components</title>
+<meta name="author" content="池田友洋, Tomohiro IKEDA, rilakkuma3xjapan" />
+<meta name="description" content="Web Components for Web Audio API" />
+<meta name="keywords" content="x-piano, Web Components, Shadow DOM, Custom Elements, HTML Templates, HTML Imports" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <meta name="format-detection" content="telephone=no" />
 <style type="text/css">
@@ -25,6 +28,7 @@
         font-family:'Lucida Grande', 'Calibri', Helvetica, Arial, sans-serif;
         font-size:1.5rem;
         font-style:italic;
+        font-weight:lighter;
         color:#C0C;
         text-align:center;
         background-color:#000;
@@ -108,6 +112,19 @@
                 document.getElementById('x-piano-tag').textContent = document.getElementById('x-piano-wrapper').innerHTML;
                 document.getElementById('x-piano-tag').textContent = document.getElementById('x-piano-tag').textContent.replace(/&quot;/g, '"').replace(/=""/g, '');
             };
+
+            var triggerIndexes = [39, 41, 43, 44, 46, 48, 50, 51];
+            var interval       =  250;
+
+            triggerIndexes.forEach(function(element, index) {
+                window.setTimeout(function() {
+                    xpiano.trigger(element, true);
+
+                    window.setTimeout(function() {
+                        xpiano.trigger(element, false);
+                    }, interval);
+                }, (interval * (index + 1)));
+            });
 
             xpiano.onkeyboarddown = function(element, index) {
                 updateXPianoTag();
@@ -208,7 +225,7 @@
 </head>
 <body>
     <header>
-        <h1>Import &lt;x-piano&gt;</h1>
+        <h1>Web Components &lt;x-piano&gt;</h1>
     </header>
 
     <section>

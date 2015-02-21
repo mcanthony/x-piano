@@ -23,14 +23,14 @@ Web Components for Web Audio API
   
     <script type="text/javascript">
     <!--
-        //This is invoked when import HTML is success.
+        // This is invoked when import HTML is success.
         var onLoadCallback = function(event) {
-            //do something for main document
+            // do something for main document
         };
 
-        //This is invoked when import HTML is failure.
+        // This is invoked when import HTML is failure.
         var onErrorCallback = function(event) {
-            //do something for error
+            // do something for error
         };
     //-->
     </script>
@@ -41,21 +41,21 @@ or,
     <script type="text/javascript">
         <!--
         (function() {
-            //Create <link> tag for import HTML dynamically
+            // Create <link> tag for import HTML dynamically
             var link = document.createElement('link');
 
             link.setAttribute('rel', 'import');
             link.setAttribute('href', 'x-piano/x-piano.html');
             link.setAttribute('type', 'text/html');
 
-            //This is invoked when import HTML is success.
+            // This is invoked when import HTML is success.
             link.onload = function(event) {
-                //do something for main document
+                // do something for main document
             };
 
-            //This is invoked when import HTML is failure.
+            // This is invoked when import HTML is failure.
             link.onerror = function(error) {
-                //do something for error
+                // do something for error
             };
 
             document.querySelector('head').appendChild(link);
@@ -115,4 +115,30 @@ The following callbacks is invoked when keyboard was either down or up.
         console.log(index + ' :');
         console.dir(element);
     };
+  
+## Trigger
+  
+The sound is created by triggering event.
+  
+    var xpiano = document.querySelector('x-piano');
+
+    /**
+     * This method triggers event.
+     * @param {number} index This argument is between 0 and 88.
+     * @param {boolean} isDown If this argument is true, the designated keyboard is down.
+     *     Otherwise, the designated keyboard is up.
+     */
+    xpiano.trigger(index, isDown);
+  
+For example,
+  
+    window.setTimeout(function() {
+        // A (440 Hz) start
+        xpiano.trigger(48, true);
+
+        window.setTimeout(function() {
+            // A (440 Hz) stop
+            xpiano.trigger(48, false);
+        }, 1000);
+    }, 1000);
   

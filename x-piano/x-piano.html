@@ -57,7 +57,7 @@
                 _uiOnly : {
                     value        : false,
                     writable     : true,
-                    configurable : true,
+                    configurable : false,
                     enumerable   : false
                 },
                 uiOnly : {
@@ -350,6 +350,24 @@
                     configurable : false,
                     enumerable   : true
                 },
+                _keyboards : {
+                    value        : [],
+                    writable     : true,
+                    configurable : false,
+                    enumerable   : false
+                },
+                keyboards : {
+                    get : function() {
+                        return this._keyboards;
+                    },
+                    set : function(keyboards) {
+                        if (Array.isArray(keyboards)) {
+                            this._keyboards = keyboards;
+                        }
+                    },
+                    configurable : false,
+                    enumerable   : true
+                },
                 _onkeyboarddown : {
                     value        : function(element, index) {},
                     writable     : true,
@@ -383,6 +401,34 @@
                             this._onkeyboardup = callback;
                         }
                     },
+                    configurable : false,
+                    enumerable   : true
+                },
+                trigger : {
+                    value : function(index, isDown) {
+                        var i = parseInt(index);
+
+                        if (isNaN(i) || (i < 0) || (i >= XPiano.PIANO_88S.length)) {
+                            return;
+                        }
+
+                        var id       = 'x-piano-' + XPiano.PIANO_88S[i];
+                        var keyboard = null;
+
+                        for (var j = 0, len = this.keyboards.length; j < len; j++) {
+                            if (id === this.keyboards[j].getAttribute('id')) {
+                                keyboard = this.keyboards[j];
+                                break;
+                            }
+                        }
+
+                        var type  = Boolean(isDown) ? MOUSE_EVENTS.START : MOUSE_EVENTS.END;
+                        var event = subDocument.createEvent('Event');
+
+                        event.initEvent(type, true, true);
+                        keyboard.dispatchEvent(event);
+                    },
+                    writable     : false,
                     configurable : false,
                     enumerable   : true
                 },
@@ -585,7 +631,8 @@
                 },
                 attachedCallback : {
                     value : function() {
-                        var keyboards  = Array.prototype.slice.call(this.shadowRoot.querySelectorAll('.x-piano-off'), 0);
+                        this.keyboards = Array.prototype.slice.call(this.shadowRoot.querySelectorAll('.x-piano-off'), 0);
+
                         var eg         = null;
                         var oscillator = this.audiocontext.createOscillator();
 
@@ -649,7 +696,7 @@
                             eg.gain.setTargetAtTime(0, t3, t4);
                         };
 
-                        keyboards.forEach(function(element) {
+                        this.keyboards.forEach(function(element) {
                             element.addEventListener(XPiano.MOUSE_EVENTS.START, function() {
                                 var callback = function() {
                                     element.classList.add('x-piano-on');
