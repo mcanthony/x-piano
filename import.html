@@ -26,7 +26,7 @@
     h1 {
         padding:2rem 0rem;
         font-family:'Lucida Grande', 'Calibri', Helvetica, Arial, sans-serif;
-        font-size:1.5rem;
+        font-size:2rem;
         font-style:italic;
         font-weight:lighter;
         color:#C0C;
@@ -34,7 +34,9 @@
         background-color:#000;
     }
 
-    x-piano {margin:2rem auto;}
+    x-piano {
+        margin:2rem auto;
+    }
 
     #x-piano-tag, fieldset {
         -webkit-box-sizing:border-box;
@@ -43,7 +45,8 @@
 
         margin:2rem auto;
         border:2px solid #EEE;
-        width:1256px;
+        width:90%;
+        max-width:1256px;
         background-color:#FFF;
     }
 
@@ -53,30 +56,46 @@
         color:#676767;
     }
 
-    fieldset {padding:2rem;}
+    fieldset {
+        padding:2rem;
+    }
 
     legend {
         font-size:22px;
         font-style:italic;
     }
 
-    dl {float:left; color:#999;}
-        dl dt {margin:0.5rem 0rem; list-style-type:square; font-size:1.125rem;}
-        dl dt:before {
-            content:"";
-            display:inline-block;
-            margin-right:0.5rem;
-            border-top:10px solid rgba(0, 0, 0, 0);
-            border-bottom:10px solid rgba(0, 0, 0, 0);
-            border-left:15px solid #999;
-            vertical-align:-0.25rem;
-        }
+    dl {
+        color:#999;
+    }
 
-    dl:not(:first-of-type) {margin-left:2rem}
+    dl dt {
+        margin:0.5rem 0rem;
+        list-style-type:square;
+        font-size:1.125rem;
+    }
 
-    input, label {cursor:pointer}
+    dl dt:before {
+        content:"";
+        display:inline-block;
+        margin-right:0.5rem;
+        border-top:10px solid rgba(0, 0, 0, 0);
+        border-bottom:10px solid rgba(0, 0, 0, 0);
+        border-left:15px solid #999;
+        vertical-align:-0.25rem;
+    }
 
-    [type="radio"] {margin-left:0.5rem;}
+    input, label {
+        cursor:pointer;
+    }
+
+    [type="checkbox"] {
+        margin-right:0.25rem;
+    }
+
+    [type="radio"] {
+        margin:0rem 0.25rem;
+    }
 
     footer {
         clear:both;
@@ -87,12 +106,24 @@
         background-color:#000;
     }
 
-    small {font-size:0.875rem;}
+    small {
+        font-size:0.875rem;
+    }
 
     .invisibility {
         width:0px;
         height:0px;
         overflow:hidden;
+    }
+
+    @media only screen and (min-width: 960px) {
+        dl {
+            float:left;
+        }
+
+        dl:not(:first-of-type) {
+            margin-left:2rem;
+        }
     }
 
 </style>
@@ -114,7 +145,7 @@
             };
 
             var triggerIndexes = [39, 41, 43, 44, 46, 48, 50, 51];
-            var interval       =  250;
+            var interval       = 500;
 
             triggerIndexes.forEach(function(element, index) {
                 window.setTimeout(function() {
@@ -145,6 +176,16 @@
                     xpiano.setAttribute(XPiano.ATTRIBUTES.UI_ONLY, '');
                 } else {
                     xpiano.removeAttribute(XPiano.ATTRIBUTES.UI_ONLY);
+                }
+
+                updateXPianoTag();
+            }, false);
+
+            document.getElementById('checkbox-responsive').addEventListener('click', function() {
+                if (this.checked) {
+                    xpiano.setAttribute(XPiano.ATTRIBUTES.RESPONSIVE, '');
+                } else {
+                    xpiano.removeAttribute(XPiano.ATTRIBUTES.RESPONSIVE);
                 }
 
                 updateXPianoTag();
@@ -240,26 +281,28 @@
             <dl>
                 <dt><label><input type="checkbox" id="checkbox-ui-only" /> ui-only</label></dt>
                 <dd class="invisibility">ui-only</dd>
+                <dt><label><input type="checkbox" id="checkbox-responsive" /> responsive</label></dt>
+                <dd class="invisibility">responsive</dd>
                 <dt>theme</dt>
                 <dd>
                     <form id="form-theme">
-                        <label><input type="radio" name="radio-theme" value="normal" checked />&nbsp;&nbsp;normal</label>
-                        <label><input type="radio" name="radio-theme" value="fiber" />&nbsp;&nbsp;fiber</label>
-                        <label><input type="radio" name="radio-theme" value="wood" />&nbsp;&nbsp;wood</label>
-                        <label><input type="radio" name="radio-theme" value="crystal" />&nbsp;&nbsp;crystal</label>
-                        <label><input type="radio" name="radio-theme" value="flat" />&nbsp;&nbsp;flat</label>
-                        <label><input type="radio" name="radio-theme" value="keyboard" />&nbsp;&nbsp;keyboard</label>
-                        <label><input type="radio" name="radio-theme" value="none" />&nbsp;&nbsp;none</label>
+                        <label><input type="radio" name="radio-theme" value="normal" checked /> normal</label>
+                        <label><input type="radio" name="radio-theme" value="fiber" /> fiber</label>
+                        <label><input type="radio" name="radio-theme" value="wood" /> wood</label>
+                        <label><input type="radio" name="radio-theme" value="crystal" /> crystal</label>
+                        <label><input type="radio" name="radio-theme" value="flat" /> flat</label>
+                        <label><input type="radio" name="radio-theme" value="keyboard" /> keyboard</label>
+                        <label><input type="radio" name="radio-theme" value="none" /> none</label>
                     </form>
                 </dd>
                 <dt>type</dt>
                 <dd>
                     <form id="form-type">
-                        <label><input type="radio" name="radio-type" value="piano" checked />&nbsp;&nbsp;piano</label>
-                        <label><input type="radio" name="radio-type" value="sin" />&nbsp;&nbsp;sin</label>
-                        <label><input type="radio" name="radio-type" value="square" />&nbsp;&nbsp;square</label>
-                        <label><input type="radio" name="radio-type" value="sawtooth" />&nbsp;&nbsp;sawtooth</label>
-                        <label><input type="radio" name="radio-type" value="triangle" />&nbsp;&nbsp;triangle</label>
+                        <label><input type="radio" name="radio-type" value="piano" checked /> piano</label>
+                        <label><input type="radio" name="radio-type" value="sin" /> sin</label>
+                        <label><input type="radio" name="radio-type" value="square" /> square</label>
+                        <label><input type="radio" name="radio-type" value="sawtooth" /> sawtooth</label>
+                        <label><input type="radio" name="radio-type" value="triangle" /> triangle</label>
                     </form>
                 </dd>
                 <dt><label for="range-volume">volume : <span id="output-volume">1</span></label></dt>

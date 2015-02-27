@@ -77,6 +77,7 @@ Refer to the following table for attribute details.
 |  Attribute | Description                  | Value                                                                      |
 |:-----------|:-----------------------------|:---------------------------------------------------------------------------|
 | ui-only    | Not use sound                | boolean attribute                                                          |
+| responsive | Responsive Layout            | boolean attribute                                                          |
 | theme      | Piano Design                 | 'normal' (default), 'fiber', 'wood', 'crystal', 'flat', 'keyboard', 'none' |
 | type       | Sound Source                 | 'piano' (default), 'sin', 'square', 'sawtooth', 'triangle'                 |
 | volume     | Master Volume                | 0.0 - 1.0 (1.0  by default)                                                |
