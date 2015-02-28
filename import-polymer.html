@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<title>&lt;x-piano&gt; (use Polymer) | HTML Imports | Web Components</title>
+<meta name="author" content="池田友洋, Tomohiro IKEDA, rilakkuma3xjapan" />
+<meta name="description" content="Web Components for Web Audio API" />
+<meta name="keywords" content="x-piano, Web Components, Shadow DOM, Custom Elements, HTML Templates, HTML Imports" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+<meta name="format-detection" content="telephone=no" />
+<script type="text/javascript" src="bower_components/webcomponentsjs/webcomponents.min.js"></script>
+<link rel="import" href="x-piano-polymer/x-piano.html" type="text/html" />
+<style type="text/css">
+
+    * {
+        margin:0px;
+        padding:0px;
+    }
+
+    body {
+        font-family:'Myriad Pro', Calibri, Helvetica, Arial, sans-serif;
+        font-size:16px;
+        line-height:1.5;
+        color:#777;
+        background-color:#fafafa;
+    }
+
+    header h1 {
+        padding:2rem 0rem;
+        font-family:'Lucida Grande', 'Calibri', Helvetica, Arial, sans-serif;
+        font-size:2rem;
+        font-style:italic;
+        font-weight:lighter;
+        color:#C0C;
+        text-align:center;
+        background-color:#000;
+    }
+
+    section h1 {
+        margin-top:2rem;
+        padding:2rem 0rem 2rem 2rem;
+        font-family:'Lucida Grande', 'Calibri', Helvetica, Arial, sans-serif;
+        font-size:1.5rem;
+        font-style:italic;
+        font-weight:lighter;
+        color:#C0C;
+        background-color:#000;
+    }
+
+    x-piano {
+        margin:2rem auto;
+    }
+
+    #x-piano-tag, fieldset {
+        -webkit-box-sizing:border-box;
+           -moz-box-sizing:border-box;
+                box-sizing:border-box;
+
+        margin:2rem auto;
+        border:2px solid #EEE;
+        width:90%;
+        max-width:1256px;
+        background-color:#FFF;
+    }
+
+    footer {
+        clear:both;
+        margin:1.5rem 0rem;
+        padding:3rem 0rem;
+        color:#fafafa;
+        text-align:center;
+        background-color:#000;
+    }
+
+    small {
+        font-size:0.875rem;
+    }
+
+</style>
+</head>
+<body>
+    <header>
+        <h1>Web Components &lt;x-piano&gt;</h1>
+    </header>
+
+    <section>
+        <h1>theme=&quot;normal&quot;</h1>
+        <x-piano theme="normal" responsive></x-piano>
+    </section>
+    <section>
+        <h1>theme=&quot;fiber&quot;</h1>
+        <x-piano theme="fiber" responsive></x-piano>
+    </section>
+    <section>
+        <h1>theme=&quot;wood&quot;</h1>
+        <x-piano theme="wood" responsive></x-piano>
+    </section>
+    <section>
+        <h1>theme=&quot;crystal&quot;</h1>
+        <x-piano theme="crystal" responsive></x-piano>
+    </section>
+    <section>
+        <h1>theme=&quot;flat&quot;</h1>
+        <x-piano theme="flat" responsive></x-piano>
+    </section>
+    <section>
+        <h1>theme=&quot;keyboards&quot;</h1>
+        <x-piano theme="keyboards" responsive></x-piano>
+    </section>
+    <section>
+        <h1>theme=&quot;none&quot;</h1>
+        <x-piano theme="none" responsive></x-piano>
+    </section>
+    <section>
+        <h1>Fix</h1>
+        <x-piano></x-piano>
+    </section>
+    <footer>
+        <small>Copyright 2014 &COPY; Tomohiro IKEDA</small>
+    </footer>
+</body>
+</html>
