@@ -1,0 +1,23 @@
+{
+  "name": "x-piano",
+  "version": "0.0.0",
+  "homepage": "https://github.com/Korilakkuma/x-piano",
+  "authors": [
+    "Korilakkuma <rilakkuma.san.xjapan@gmail.com>"
+  ],
+  "description": "Piano illust with Polymer Web Components",
+  "main": "x-piano.html",
+  "keywords": [
+    "Polymer",
+    "web-components"
+  ],
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "core-component-page": "Polymer/core-component-page#^0.5",
+    "webcomponentsjs": "~0.5.5"
+  },
+  "ignore" : [
+  ],
+  "private" : false
+}
