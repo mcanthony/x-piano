@@ -18,9 +18,15 @@ Web Components for Web Audio API
 * [Non Polymer](http://korilakkuma.github.io/x-piano/demo/import.html)
 * [Use Polymer](http://korilakkuma.github.io/x-piano/demo/import-polymer.html)
   
+## Browser Support
+  
+|![Chrome](https://cloud.githubusercontent.com/assets/398893/3528328/23bc7bc4-078e-11e4-8752-ba2809bf5cce.png)|![Opera](https://cloud.githubusercontent.com/assets/398893/3528330/27ec9fa8-078e-11e4-95cb-709fd11dac16.png)|![Firefox](https://cloud.githubusercontent.com/assets/398893/3528329/26283ab0-078e-11e4-84d4-db2cf1009953.png)|![Safari](https://cloud.githubusercontent.com/assets/398893/3528331/29df8618-078e-11e4-8e3e-ed8ac738693f.png)|
+|----------|----------|----------|----------|
+| Latest ✔ | Latest ✔ | Latest ✔ | Latest ✔ |
+   
 ## Usage
   
-<x-piano> tag can be used by the following HTML.
+&lt;x-piano&gt; tag can be used by the following HTML.
   
     <script type="text/javascript">
     <!--
@@ -40,7 +46,7 @@ Web Components for Web Audio API
 or,
   
     <script type="text/javascript">
-        <!--
+    <!--
         (function() {
             // Create <link> tag for import HTML dynamically
             var link = document.createElement('link');
@@ -63,6 +69,11 @@ or,
         })();
     //-->
     </script>
+  
+In the case of using Polymer,
+  
+    <script type="text/javascript" src="bower_components/webcomponentsjs/webcomponents.min.js"></script>
+    <link rel="import" href="x-piano-polymer/x-piano.html" type="text/html" />
   
 To import 'x-piano.html', then describe &lt;x-piano&gt; tag.
   
@@ -90,7 +101,7 @@ Refer to the following table for attribute details.
 | glide      | Glide (Oscillator only)      | 0.0 -     (0.0  by default)                                                |
 | value      | Keyboard Index               | JSON (readonly)                                                            |
   
-## Callbacks
+### Callbacks
   
 The following callbacks is invoked when keyboard was either down or up.
   
@@ -118,7 +129,7 @@ The following callbacks is invoked when keyboard was either down or up.
         console.dir(element);
     };
   
-## Trigger
+### Trigger
   
 The sound is created by triggering event.
   
@@ -126,7 +137,7 @@ The sound is created by triggering event.
 
     /**
      * This method triggers event.
-     * @param {number} index This argument is between 0 and 88.
+     * @param {number} index This argument is between 0 and 87.
      * @param {boolean} isDown If this argument is true, the designated keyboard is down.
      *     Otherwise, the designated keyboard is up.
      */
@@ -134,6 +145,8 @@ The sound is created by triggering event.
   
 For example,
   
+    var xpiano = document.querySelector('x-piano');
+
     window.setTimeout(function() {
         // A (440 Hz) start
         xpiano.trigger(48, true);
