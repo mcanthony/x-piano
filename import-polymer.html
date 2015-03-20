@@ -155,6 +155,10 @@
 
             updateXPianoTag();
 
+            if (window.XPiano === undefined) {
+                return;
+            }
+
             document.getElementById('checkbox-ui-only').addEventListener('click', function() {
                 if (this.checked) {
                     xpiano.setAttribute(XPiano.ATTRIBUTES.UI_ONLY, '');
