@@ -24,6 +24,10 @@ Web Components for Web Audio API
 |----------|----------|----------|----------|
 | Latest ✔ | Latest ✔ | Latest ✔ | Latest ✔ |
    
+## Installation
+  
+    $ bower install --save-dev x-piano
+  
 ## Usage
   
 &lt;x-piano&gt; tag can be used by the following HTML.
