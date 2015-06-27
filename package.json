@@ -1,0 +1,23 @@
+{
+  "name": "x-piano",
+  "version": "1.0.0",
+  "description": "Piano illust with Polymer Web Components",
+  "main": "x-piano.html",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Korilakkuma/x-piano.git"
+  },
+  "keywords": [
+    "Polymer",
+    "web-components",
+    "x-piano",
+    "Web Audio API",
+    "piano"
+  ],
+  "author": "Korilakkuma <rilakkuma.san.xjapan@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Korilakkuma/x-piano/issues"
+  },
+  "homepage": "https://korilakkuma.github.io/x-piano/"
+}
