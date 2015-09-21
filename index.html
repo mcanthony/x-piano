@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+<title>x-piano</title>
+<meta name="author" content="池田友洋, Tomohiro IKEDA, rilakkuma3xjapan" />
+<meta name="description" content="Web Components for Web Audio API" />
+<meta name="keywords" content="x-piano, Web Components, Shadow DOM, Custom Elements, HTML Templates, HTML Imports, Polymer" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=yes" />
+<link rel="canonical" href="https://korilakkuma.github.io/x-piano/" />
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css" />
+<script type="text/javascript">
+<!--
+    (function() {
+        if ((location.hostname === 'korilakkuma.github.io') && (location.protocol !== 'https:')) {
+            location.protocol = 'https:';
+        }
+    })();
+//-->
+</script>
+<!-- Google Analytics -->
+<script type="text/javascript">
+<!--
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-41390233-1', 'weblike.jp');
+    ga('send', 'pageview');
+//-->
+</script>
+<!-- /Google Analytics -->
+</head>
+
+
+<body>
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+            <a id="forkme_banner" href="//github.com/Korilakkuma/x-piano">View on GitHub</a>
+
+            <h1 id="project_title">x-piano</h1>
+            <h2 id="project_tagline">Web Components for Web Audio API</h2>
+
+            <section id="downloads">
+                <a class="zip_download_link" href="//github.com/Korilakkuma/x-piano/zipball/master">Download this project as a .zip file</a>
+                <a class="tar_download_link" href="//github.com/Korilakkuma/x-piano/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+        <section id="main_content" class="inner">
+            <h1><a name="x-piano" class="anchor" href="#x-piano"><span class="octicon octicon-link"></span></a>x-piano</h1>
+
+            <p>Web Components for Web Audio API</p>
+
+            <h2><a name="overview" class="anchor" href="#overview"><span class="octicon octicon-link"></span></a>Overview</h2>
+
+            <p>
+                &lt;x-piano&gt; is GUI parts library (Web Components) for Web Applications that use Web Audio API. &lt;x-piano&gt; has has the following features.
+            </p>
+
+            <ul>
+                <li>Rich UI by Simple tag</li>
+                <li>Play the One-Shot Audio</li>
+                <li>Create Sound</li>
+                <li>Simple Effector (Envelope Generator, Transpose, Glide)</li>
+            </ul>
+
+            <h2><a name="demo" class="anchor" href="#demo"><span class="octicon octicon-link"></span></a>Demo</h2>
+
+            <ul>
+                <li><a href="demo/import.html" target="_blank">Non Polymer</a></li>
+                <li><a href="demo/import-polymer.html" target="_blank">Use Polymer</a></li>
+            </ul>
+
+            <h2><a name="browser-support" class="anchor" href="#browser-support"><span class="octicon octicon-link"></span></a>Browser Support</h2>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th scope="col"><img src="https://cloud.githubusercontent.com/assets/398893/3528328/23bc7bc4-078e-11e4-8752-ba2809bf5cce.png" alt="Chrome"></th>
+                        <th scope="col"><img src="https://cloud.githubusercontent.com/assets/398893/3528330/27ec9fa8-078e-11e4-95cb-709fd11dac16.png" alt="Opera"></th>
+                        <th scope="col"><img src="https://cloud.githubusercontent.com/assets/398893/3528329/26283ab0-078e-11e4-84d4-db2cf1009953.png" alt="Firefox"></th>
+                        <th scope="col"><img src="https://cloud.githubusercontent.com/assets/398893/3528331/29df8618-078e-11e4-8e3e-ed8ac738693f.png" alt="Safari"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>Latest ✔</td><td>Latest ✔</td><td>Latest ✔</td><td>Latest ✔</td></tr>
+                </tbody>
+            </table>
+
+            <h2><a name="installation" class="anchor" href="#installation"><span class="octicon octicon-link"></span></a>Installation</h2>
+<pre>
+<code>
+$ npm install x-piano
+</code>
+</pre>
+            <p>or,</p>
+<pre>
+<code>
+$ bower install x-piano
+</code>
+</pre>
+
+            <h2><a name="usage" class="anchor" href="#usage"><span class="octicon octicon-link"></span></a>Usage</h2>
+
+            <p>&lt;x-piano&gt; tag can be used by the following HTML.</p>
+
+<pre>
+<code>
+&lt;script type=&quot;text/javascript&quot;&gt;
+&lt;!--
+    // This is invoked when import HTML is success.
+    var onLoadCallback = function(event) {
+        // do something for main document
+    };
+
+    //This is invoked when import HTML is failure.
+    var onErrorCallback = function(event) {
+        // do something for error
+    };
+//--&gt;
+&lt;/script&gt;
+&lt;link rel=&quot;import&quot; href=&quot;x-piano/x-piano.html&quot; type=&quot;text/html&quot; onload=&quot;onLoadCallback(event)&quot; onerror=&quot;onErrorCallback(event)&quot; /&gt;
+</code>
+</pre>
+            <p>or,</p>
+<pre>
+<code>
+&lt;script type=&quot;text/javascript&quot;&gt;
+&lt;!--
+    (function() {
+        // Create &lt;link&gt; tag for import HTML dynamically
+        var link = document.createElement(&apos;link&apos;);
+
+        link.setAttribute(&apos;rel&apos;, &apos;import&apos;);
+        link.setAttribute(&apos;href&apos;, &apos;x-piano/x-piano.html&apos;);
+        link.setAttribute(&apos;type&apos;, &apos;text/html&apos;);
+
+        // This is invoked when import HTML is success.
+        link.onload = function(event) {
+            // do something for main document
+        };
+
+        // This is invoked when import HTML is failure.
+        link.onerror = function(error) {
+            // do something for error
+        };
+
+        document.querySelector(&apos;head&apos;).appendChild(link);
+    })();
+//--&gt;
+&lt;/script&gt;
+</code>
+</pre>
+
+            <p>In the case of using Polymer,</p>
+
+<pre>
+<code>
+&lt;script type=&quot;text/javascript&quot; src=&quot;bower_components/webcomponentsjs/webcomponents.min.js&quot;&gt;&lt;/script&gt;
+&lt;link rel=&quot;import&quot; href=&quot;x-piano-polymer/x-piano.html&quot; type=&quot;text/html&quot; /&gt;
+</code>
+</pre>
+
+            <p>To import &apos;x-piano.html&apos;, then describe &lt;x-piano&gt; tag.</p>
+
+<pre>
+<code>
+&lt;x-piano&gt;&lt;/x-piano&gt;
+</code>
+</pre>
+
+            <p>Moreover, &lt;x-piano&gt; tag can have some attributes.<br />For example,</p>
+
+<pre>
+<code>
+&lt;x-piano type=&quot;sawtooth&quot; volume=&quot;0.4&quot; attack=&quot;1&quot; glide=&quot;1.5&quot;&gt;&lt;/x-piano&gt;
+</code>
+</pre>
+
+            <p>Refer to the following table for attribute details.</p>
+
+            <h3><a name="attributes" class="anchor" href="#attributes"><span class="octicon octicon-link"></span></a>Attributes</h3>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th scope="col">Attribute</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">Value</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>ui-only</td><td>Not use sound</td><td>boolean attribute</td></tr>
+                    <tr><td>responsive</td><td>Responsive Layout</td><td>boolean attribute</td></tr>
+                    <tr><td>theme</td><td>Piano Design</td><td>&apos;normal&apos; (default), &apos;fiber&apos;, &apos;wood&apos;, &apos;crystal&apos;, &apos;flat&apos;, &apos;keyboard&apos;, &apos;none&apos;</td></tr>
+                    <tr><td>type</td><td>Sound Source</td><td>&apos;piano&apos; (default), &apos;sine&apos;, &apos;square&apos;, &apos;sawtooth&apos;, &apos;triangle&apos;</td></tr>
+                    <tr><td>volume</td><td>Master Volume</td><td>0.0 - 1.0 (1.0 by default)</td></tr>
+                    <tr><td>attack</td><td>Envelope Generator (Attack)</td><td>0.0 - 1.0 (0.01 by default)</td></tr>
+                    <tr><td>decay</td><td>Envelope Generator (Decay)</td><td>0.0 - 1.0 (0.3 by default)</td></tr>
+                    <tr><td>sustain</td><td>Envelope Generator (Sustain)</td><td>0.0 - 1.0 (1.0 by default)</td></tr>
+                    <tr><td>release</td><td>Envelope Generator (Release)</td><td>0.0 - 1.0 (1.0 by default)</td></tr>
+                    <tr><td>transpose</td><td>Transpose</td><td>Integer (0 by default)</td></tr>
+                    <tr><td>glide</td><td>Glide (Oscillator only)</td><td>0.0 - (0.0 by default)</td></tr>
+                    <tr><td>value</td><td>Keyboard Index</td><td>JSON (readonly)</td></tr>
+                </tbody>
+            </table>
+
+            <h3><a name="event-handlers" class="anchor" href="#event-handlers"><span class="octicon octicon-link"></span></a>Event handlers</h3>
+
+            <p>The following event handlers are invoked when keyboard was either down or up.</p>
+
+<pre>
+<code>
+var xpiano = document.querySelector(&apos;x-piano&apos;);
+
+/**
+ * This event handler is invoked when keyboard was down.
+ * @param {HTMLElement} element This argument is the instance of HTMLElement that is added event listener.
+ * @param {number} index This argument is the index of keyboard where event occurred.
+ *     This value is between 0 and 87.
+ */
+xpiano.onkeyboarddown = function(element, index) {
+    console.log(index + &apos; :&apos;);
+    console.dir(element);
+};
+
+/**
+ * This event handler is invoked when keyboard was up.
+ * @param {HTMLElement} element This argument is the instance of HTMLElement that is added event listener.
+ * @param {number} index This argument is the index of keyboard where event occurred.
+ *     This value is between 0 and 87.
+ */
+xpiano.onkeyboardup = function(element, index) {
+    console.log(index + &apos; :&apos;);
+    console.dir(element);
+};
+</code>
+</pre>
+
+            <h3><a name="trigger" class="anchor" href="#trigger"><span class="octicon octicon-link"></span></a>Trigger</h3>
+
+            <p>The sound is created by triggering event.</p>
+
+<pre>
+<code>
+var xpiano = document.querySelector(&apos;x-piano&apos;);
+
+/**
+ * This method triggers event.
+ * @param {number} index This argument is between 0 and 87.
+ * @param {boolean} isDown If this argument is true, the designated keyboard is down.
+ *     Otherwise, the designated keyboard is up.
+ */
+xpiano.trigger(index, isDown);
+</code>
+</pre>
+
+            <p>For example,</p>
+
+<pre>
+<code>
+var xpiano = document.querySelector(&apos;x-piano&apos;);
+
+window.setTimeout(function() {
+    // A (440 Hz) start
+    xpiano.trigger(48, true);
+
+    window.setTimeout(function() {
+        // A (440 Hz) stop
+        xpiano.trigger(48, false);
+    }, 1000);
+}, 1000);
+</code>
+</pre>
+
+            <h2><a name="license" class="anchor" href="#license"><span class="octicon octicon-link"></span></a>License</h2>
+
+            <p>Copyright &copy; 2014 Tomohiro IKEDA (Korilakkuma)<br />Released under the MIT license</p>
+
+        </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+        <footer class="inner">
+            <p class="copyright">x-piano maintained by <a href="//github.com/Korilakkuma" target="_blank">Korilakkuma</a></p>
+            <p>Published with <a href="//pages.github.com" target="_blank">GitHub Pages</a></p>
+        </footer>
+    </div>
+
+</body>
+</html>
