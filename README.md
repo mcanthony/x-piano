@@ -15,8 +15,8 @@ Web Components for Web Audio API
   
 ## Demo
   
-* [Non Polymer](http://korilakkuma.github.io/x-piano/demo/import.html)
-* [Use Polymer](http://korilakkuma.github.io/x-piano/demo/import-polymer.html)
+* [Non Polymer](https://korilakkuma.github.io/x-piano/demo/import.html)
+* [Use Polymer](https://korilakkuma.github.io/x-piano/demo/import-polymer.html)
   
 ## Browser Support
   
@@ -26,7 +26,11 @@ Web Components for Web Audio API
    
 ## Installation
   
-    $ bower install --save-dev x-piano
+    $ npm install x-piano
+  
+  or,
+  
+    $ bower install x-piano
   
 ## Usage
   
@@ -90,6 +94,8 @@ For example,
   
 Refer to the following table for attribute details.
   
+### Attributes
+  
 |  Attribute | Description                  | Value                                                                      |
 |:-----------|:-----------------------------|:---------------------------------------------------------------------------|
 | ui-only    | Not use sound                | boolean attribute                                                          |
@@ -105,14 +111,14 @@ Refer to the following table for attribute details.
 | glide      | Glide (Oscillator only)      | 0.0 -     (0.0  by default)                                                |
 | value      | Keyboard Index               | JSON (readonly)                                                            |
   
-### Callbacks
+### Event handlers
   
-The following callbacks is invoked when keyboard was either down or up.
+The following event handlers are invoked when keyboard was either down or up.
   
     var xpiano = document.querySelector('x-piano');
 
     /**
-     * This callback is invoked when keyboard was down.
+     * This event handler is invoked when keyboard was down.
      * @param {HTMLElement} element This argument is the instance of HTMLElement that is added event listener.
      * @param {number} index This argument is the index of keyboard where event occurred.
      *     This value is between 0 and 87.
@@ -123,7 +129,7 @@ The following callbacks is invoked when keyboard was either down or up.
     };
 
     /**
-     * This callback is invoked when keyboard was up.
+     * This event handler is invoked when keyboard was up.
      * @param {HTMLElement} element This argument is the instance of HTMLElement that is added event listener.
      * @param {number} index This argument is the index of keyboard where event occurred.
      *     This value is between 0 and 87.
@@ -160,4 +166,9 @@ For example,
             xpiano.trigger(48, false);
         }, 1000);
     }, 1000);
+  
+## License
+  
+Copyright (c) 2014 Tomohiro IKEDA (Korilakkuma)  
+Released under the MIT license
   
